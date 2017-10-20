@@ -1,0 +1,19 @@
+
+NET "CLK_50M" LOC = V10 | TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 50000 kHz;
+
+##
+NET RSTn                                 LOC = N4 | IOSTANDARD = "LVCMOS15"; ## SW2 pushbutton
+##
+
+########EEPROM Pin define#####################
+NET SCL                         	 		  LOC = P6 | IOSTANDARD = "LVCMOS33";		  
+NET SDA                          	  	  LOC = N5 | IOSTANDARD = "LVCMOS33"; 		 
+
+########LED Pin define#####################
+NET LED<0>                        		  LOC = V5 | IOSTANDARD = "LVCMOS33";       ## LED1
+NET LED<1>                       	     LOC = R3 | IOSTANDARD = "LVCMOS33";       ## LED2
+NET LED<2>                               LOC = T3 | IOSTANDARD = "LVCMOS33";       ## LED3
+NET LED<3>                               LOC = T4 | IOSTANDARD = "LVCMOS33";       ## LED4
+   
+

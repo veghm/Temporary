@@ -2,11 +2,11 @@ module sys_init(
 	input clk_in,
 	input RSTn,
 	output o_clk_out1,
-	//output o_clk_out2,
+	output o_clk_out2,
 	output RST_n
 );
 wire w_LOCKED;
-wire w_clk_out1;
+wire w_clk_out1,w_clk_out2;
 reg sys_rst,sysn_rst;
 
 //resrt signal procss
@@ -18,7 +18,7 @@ always @(posedge w_clk_out1 or negedge RSTn)
 	else sysn_rst <= sys_rst; 
 assign RST_n = sysn_rst;
 
-assign o_clk_out1 = w_clk_out1;
+//assign o_clk_out1 = w_clk_out1;
 //assign o_clk_out2 = w_clk_out2;
 pll_ip pll_ip_inst(
 // Clock in ports

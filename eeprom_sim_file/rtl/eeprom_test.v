@@ -24,7 +24,7 @@ module eeprom_test
 (* KEEP = "TRUE" *)reg [7:0] rData;
 (* KEEP = "TRUE" *)reg [1:0] isStart;
 wire w_clk_out1;	
-wire w_clk_out2;	
+wire w_clk_out2;
 wire w_RST_n;
 
 assign LED = rLED;
@@ -57,17 +57,17 @@ always @ ( posedge w_clk_out1 or negedge w_RST_n )
 		endcase	
 /********************************
 *	sys initial,clock & reset
-*********************************/	
-	
+*********************************/		
 sys_init sys_init_inst(
 //input
 	.clk_in		(CLK_50M	),
 	.RSTn		(RSTn		),
 //output
 	.o_clk_out1	(w_clk_out1	),
-	//.o_clk_out2	(w_clk_out2	),
+	.o_clk_out2	(w_clk_out2	),
 	.RST_n      (w_RST_n	)
 );
+
 /***************************/
 //I2C通信程序//
 /***************************/				
@@ -86,14 +86,14 @@ iic_com U1
 
 /***************************/
 //chipscope icon和ila, 用于观察信号//
-/***************************/	/*
+/***************************/	/**/ 
 wire [35:0]   CONTROL0;
 wire [255:0]  TRIG0;
-chipscope_icon icon_debug (
+icon icon_debug (
     .CONTROL0(CONTROL0) // INOUT BUS [35:0]
 );
 
-chipscope_ila ila_filter_debug (
+ila ila_filter_debug (
     .CONTROL(CONTROL0), // INOUT BUS [35:0]
    // .CLK(dma_clk),    // IN
     .CLK(w_clk_out2),      // IN, chipscope的采样时钟
@@ -102,6 +102,6 @@ chipscope_ila ila_filter_debug (
 );                                                     
 
 assign  TRIG0[7:0]=RdData;    //采样RdData信号                                           
-*/ 
+
 
 endmodule
